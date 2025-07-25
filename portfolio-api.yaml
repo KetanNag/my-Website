@@ -1,0 +1,285 @@
+openapi: 3.0.3
+info:
+  title: Ketan Nag Portfolio API
+  description: API for managing portfolio content including profile, skills, projects, education, and certifications
+  version: 1.0.0
+  contact:
+    name: Ketan Nag
+    email: ketannag6677@gmail.com
+
+servers:
+  - url: https://example.com/api
+    description: Production server
+
+paths:
+  /profile:
+    get:
+      summary: Get user profile information
+      tags:
+        - Profile
+      responses:
+        '200':
+          description: Profile information retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        '500':
+          description: Internal server error
+
+  /skills:
+    get:
+      summary: Get skills and technologies
+      tags:
+        - Skills
+      responses:
+        '200':
+          description: Skills retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Skills'
+        '500':
+          description: Internal server error
+
+  /projects:
+    get:
+      summary: Get project portfolio
+      tags:
+        - Projects
+      responses:
+        '200':
+          description: Projects retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Projects'
+        '500':
+          description: Internal server error
+
+  /education:
+    get:
+      summary: Get education background
+      tags:
+        - Education
+      responses:
+        '200':
+          description: Education information retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Education'
+        '500':
+          description: Internal server error
+
+  /certifications:
+    get:
+      summary: Get certifications and courses
+      tags:
+        - Certifications
+      responses:
+        '200':
+          description: Certifications retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Certifications'
+        '500':
+          description: Internal server error
+
+  /contact:
+    post:
+      summary: Submit contact form
+      tags:
+        - Contact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactForm'
+      responses:
+        '200':
+          description: Message sent successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactResponse'
+        '400':
+          description: Invalid request data
+        '500':
+          description: Failed to send message
+
+components:
+  schemas:
+    Profile:
+      type: object
+      properties:
+        name:
+          type: string
+        title:
+          type: string
+        tagline:
+          type: string
+        location:
+          type: string
+        birthDate:
+          type: string
+          format: date
+        languages:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        profileImage:
+          type: string
+          format: uri
+        socialLinks:
+          $ref: '#/components/schemas/SocialLinks'
+
+    SocialLinks:
+      type: object
+      properties:
+        github:
+          type: string
+          format: uri
+        linkedin:
+          type: string
+          format: uri
+        email:
+          type: string
+          format: email
+
+    Skills:
+      type: object
+      properties:
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/SkillCategory'
+
+    SkillCategory:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        icon:
+          type: string
+        skills:
+          type: array
+          items:
+            type: string
+        color:
+          type: string
+
+    Projects:
+      type: object
+      properties:
+        projects:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        technologies:
+          type: array
+          items:
+            type: string
+        icon:
+          type: string
+        githubUrl:
+          type: string
+          format: uri
+        liveUrl:
+          type: string
+          format: uri
+          nullable: true
+        imageUrl:
+          type: string
+          format: uri
+
+    Education:
+      type: object
+      properties:
+        degrees:
+          type: array
+          items:
+            $ref: '#/components/schemas/EducationDegree'
+
+    EducationDegree:
+      type: object
+      properties:
+        id:
+          type: string
+        level:
+          type: string
+        institution:
+          type: string
+        field:
+          type: string
+        grade:
+          type: string
+        duration:
+          type: string
+        status:
+          type: string
+
+    Certifications:
+      type: object
+      properties:
+        certifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Certification'
+
+    Certification:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        issuer:
+          type: string
+        field:
+          type: string
+        year:
+          type: string
+        url:
+          type: string
+          format: uri
+          nullable: true
+
+    ContactForm:
+      type: object
+      required:
+        - name
+        - email
+        - message
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        message:
+          type: string
+
+    ContactResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string

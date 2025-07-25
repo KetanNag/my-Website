@@ -15,11 +15,12 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'HOME', href: '#home' },
+    { name: 'ABOUT', href: '#about' },
+    { name: 'SKILLS', href: '#skills' },
+    { name: 'EDUCATION', href: '#education' },
+    { name: 'PROJECTS', href: '#projects' },
+    { name: 'CONTACT', href: '#contact' },
   ];
 
   return (
@@ -27,16 +28,16 @@ const Navigation = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'backdrop-blur-md bg-dark-900/80 border-b border-white/10' : ''
+        scrolled ? 'backdrop-blur-md bg-slate-900/80 border-b border-blue-400/20' : ''
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-xl font-bold gradient-text"
+            className="text-xl font-bold text-white"
           >
-            Ketan Nag
+            <span className="text-blue-400">KN</span>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -48,10 +49,10 @@ const Navigation = () => {
                   href={item.href}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  className="text-gray-300 hover:text-white transition-colors duration-200 relative group"
+                  className="text-gray-300 hover:text-blue-400 transition-colors duration-200 relative group font-medium text-sm"
                 >
                   {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-200 group-hover:w-full"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-200 group-hover:w-full"></span>
                 </motion.a>
               ))}
             </div>
@@ -75,7 +76,7 @@ const Navigation = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden backdrop-blur-md bg-dark-900/95 border-b border-white/10"
+          className="md:hidden backdrop-blur-md bg-slate-900/95 border-b border-blue-400/20"
         >
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item) => (
@@ -83,7 +84,7 @@ const Navigation = () => {
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="block px-3 py-2 text-gray-300 hover:text-white transition-colors duration-200"
+                className="block px-3 py-2 text-gray-300 hover:text-blue-400 transition-colors duration-200"
               >
                 {item.name}
               </a>

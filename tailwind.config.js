@@ -8,16 +8,16 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#f0f4ff',
-          100: '#e0e9ff',
-          200: '#c7d6fe',
-          300: '#a5b8fc',
-          400: '#8191f8',
-          500: '#6366f1',
-          600: '#4f46e5',
-          700: '#4338ca',
-          800: '#3730a3',
-          900: '#312e81',
+          50: '#f0f9ff',
+          100: '#e0f2fe',
+          200: '#bae6fd',
+          300: '#7dd3fc',
+          400: '#38bdf8',
+          500: '#0ea5e9',
+          600: '#0284c7',
+          700: '#0369a1',
+          800: '#075985',
+          900: '#0c4a6e',
         },
         dark: {
           50: '#f8fafc',
@@ -37,6 +37,7 @@ export default {
         'glow': 'glow 2s ease-in-out infinite alternate',
         'slide-up': 'slideUp 0.8s ease-out',
         'fade-in': 'fadeIn 1s ease-out',
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
         float: {
@@ -44,8 +45,8 @@ export default {
           '50%': { transform: 'translateY(-20px)' },
         },
         glow: {
-          'from': { 'box-shadow': '0 0 20px rgba(99, 102, 241, 0.4)' },
-          'to': { 'box-shadow': '0 0 30px rgba(99, 102, 241, 0.8)' },
+          'from': { 'box-shadow': '0 0 20px rgba(96, 165, 250, 0.4)' },
+          'to': { 'box-shadow': '0 0 30px rgba(96, 165, 250, 0.8)' },
         },
         slideUp: {
           'from': { transform: 'translateY(100px)', opacity: '0' },
@@ -55,6 +56,9 @@ export default {
           'from': { opacity: '0' },
           'to': { opacity: '1' },
         },
+      },
+      fontFamily: {
+        'mono': ['Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono', 'monospace'],
       },
     },
   },
